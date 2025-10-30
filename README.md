@@ -1,188 +1,59 @@
-# Teste prático de PHP/Vue para novos colaboradores
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-
-## Por onde começar
-
-* Faça um clone deste projeto;
-    ```bash
-    git clone https://github.com/eyecarehealth/take-home-laravel-vue
-    ```
-* Crie uma nova branch com o seu nome ex:
-    ```bash
-    git checkout -b seunome
-    ```
-* Em sua branch adicione o projeto frontend em <a href="https://v2.vuejs.org/">VueJS 2</a> e o backend em <a href="https://laravel.com/docs/12.x">Laravel</a>
-* Após a conclusão, crie um PR e na PR coloque todos os detalhamentos que achar necessário para explicar seu racional e caminhos escolhidos na solução do problema.
-
-<br/><br/>
-
-
-## Objetivo
-O objetivo deste teste é avaliar suas habilidades em:
-* PHP, Laravel, APIs;
-* Design patterns;
-* Padrões de projeto;
-* MySQL e modelagem de dados;
-* Conteinerização Docker;
-* Testes unitários.
-
-
-## Problema
-
-### Solicitação de exames agrupados por páginas
-
-A solicitação de exames é uma feature presente na consulta médica e têm como objetivo solicitar a realização de exames para um determinado paciente. Para facilitar os pedidos, criamos um conceito de pacote de exames que nada mais é do que um conjunto de exames agrupados para facilitar seu uso. Uma problemática existente é o fato de que em alguns casos os médicos precisam imprimir essas solicitações em páginas diferentes para que sejam encaminhados para laboratórios diferentes.
-
-Em nosso sistema de teste vamos trabalhar com alguns objetos necessários para o seu funcionamento:
-
-### Exame
-Um exame é um pedito de exame a ser realizado por nosso paciente. Ele possui as seguintes propriedades:
-
-<table>
-    <tr>
-        <td><b>Propriedade</b></td>
-        <td><b>Tipo</b></td>
-        <td><b>Obrigatório</b></td>
-        <td><b>Descrição</b></td>
-    </tr>
-    <tr>
-        <td>name</td>
-        <td>string</td>
-        <td>Sim</td>
-        <td>Nome do exame</td>
-    </tr>
-    <tr>
-        <td>laterality</td>
-        <td>enum('OD', 'OE', 'AO')</td>
-        <td>Não</td>
-        <td>Lateralidade do exame: OD - Olho direito, OE - Olho esquerdo, AO - Ambos os olhos</td>
-    </tr>
-    <tr>
-        <td>comment</td>
-        <td>string</td>
-        <td>Sim</td>
-        <td>Comentário ou observação para o exame</td>
-    </tr>
-    <tr>
-        <td>group</td>
-        <td>enum('Individual', 'Grupo 1', 'Grupo 2', 'Grupo 3', 'Grupo 4', 'Grupo 5')</td>
-        <td>Sim</td>
-        <td>Definição de impressão, se refere a em qual página esse exame deve ser impresso</td>
-    </tr>
-</table>
-
-<br/><br/>
-
-### Pacote
-Um pacote se trata de um agrupamento de exames previamente cadastrados. Ele possui as seguintes propriedades:
-
-<table>
-    <tr>
-        <td><b>Propriedade</b></td>
-        <td><b>Tipo</b></td>
-        <td><b>Obrigatório</b></td>
-        <td><b>Descrição</b></td>
-    </tr>
-    <tr>
-        <td>name</td>
-        <td>string</td>
-        <td>Sim</td>
-        <td>Nome do pacote</td>
-    </tr>
-    <tr>
-        <td>observations</td>
-        <td>string</td>
-        <td>Não</td>
-        <td>Orientações referentes ao pacote</td>
-    </tr>
-    <tr>
-        <td>exams</td>
-        <td>array</td>
-        <td>Sim</td>
-        <td>Conjunto de exames agrupados no pacote</td>
-    </tr>
-</table>
-
-<br/><br/>
-
-
-A seleção avulsa de exames gera um pacote chamado "Exames avulsos"
-<br/>
-<p align="center" id="top">
-    <img alt="Readme" title="Readme GIF" src="./assets/selecionar_exames.png" />
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## About Laravel
 
-Nossa tela base tera a seguinte aparência, e neste exemplo já temos alguns exames selecionados de forma avulsa
-<br/>
-<p align="center" id="top">
-    <img alt="Readme" title="Readme GIF" src="./assets/componente_solicitacao_exames.png" />
-</p>
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-<br/><br/>
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-## Seleção de pacotes
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-Modal que seja capaz de listar o pacotes já criados, este modal será aberto ao clicar em "Pacote de exames"
-<br/>
-<p align="center" id="top">
-    <img alt="Readme" title="Readme GIF" src="./assets/modal_pacotes.png" />
-</p>
-<br/><br/>
+## Learning Laravel
 
-## Criação de um pacote
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
 
-Em nossa aplicação WEB vamos precisar criar um modal para criação dos pacotes e inclusão dos exames, este modal será aberto ao clicar em "Novo pacote de Exames"
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-<p align="center" id="top">
-    <img alt="Readme" title="Readme GIF" src="./assets/modal_pacote_create.png" />
-</p>
-<br/><br/>
+## Laravel Sponsors
 
-## Resultado final após selecionar múltiplos pacotes
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-Após a inserção de exames avulsos ou pacotes, teremos o seguindo resultado
-<br/>
+### Premium Partners
 
-<p align="center" id="top">
-    <img alt="Readme" title="Readme GIF" src="./assets/componente_solicitacao_exames_pacotes.png" />
-</p>
-<br/><br/>
+- **[Vehikl](https://vehikl.com)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Redberry](https://redberry.international/laravel-development)**
+- **[Active Logic](https://activelogic.com)**
 
+## Contributing
 
-### Impressão dos documentos
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-Caso os exames estejam todos inseridos no mesmo grupo será gerado apenas um PDF com uma divisão por grupos como no exemplo abaixo:
+## Code of Conduct
 
-<p align="center" id="top">
-    <img alt="Readme" title="Readme GIF" src="./assets/um_grupo.png" />
-</p>
-<br/><br/>
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-Já no caso de conter múltiplos grupos o PDF deve respeitar essa divisão mantendo o conceito de pacotes, mas separando por páginas
+## Security Vulnerabilities
 
-<p align="center" id="top">
-    <img alt="Readme" title="Readme GIF" src="./assets/exames_multi_grupos.png" />
-</p>
-<br/><br/>
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-<p align="center" id="top">
-    <img alt="Readme" title="Readme GIF" src="./assets/exames_multi_pdfs.png" />
-</p>
-<br/><br/>
+## License
 
-
-## Informações importantes
-Não preocupe em criar os dados de paciente e médico, você mockar esses dados para o teste
-
-
-## Requisitos
-
-* Ser possível cadastrar exames
-* Ser possível cadastrar pacotes
-* Ser possível adicionar exames e pacotes a uma lista
-* Ser possível imprimir PDF de acordo com a lógica sugerida
-* Arquivos de migração construindo as tabelas necessárias
-* Design pattern aplicados à lógica
-* Rotas de API para as ações do sistema
-
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
