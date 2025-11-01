@@ -103,10 +103,12 @@ Este foi um projeto desafiador, pois fugiu em boa parte do ecosistema habitual q
 
 ## Imagens
 <br>
-#### Home
+
+### Home
+Home/Tela inicial de acesso
 <img src="./resources/images/print1.jpg" />
 
-#### Telas de Exames
+### Telas de Exames
 Visão geral da relação de exames
 <img src="./resources/images/print2.jpg" />
 Modal para cadastro de um novo exame
@@ -114,7 +116,7 @@ Modal para cadastro de um novo exame
 Modal para edição de um exame existente
 <img src="./resources/images/print4.jpg" />
 
-#### Telas de Pacotes
+### Telas de Pacotes
 Visão geral de pacotes de exames cadastrados
 <img src="./resources/images/print5.jpg" />
 Modal para cadastro de um novo pacote de exames
@@ -122,7 +124,7 @@ Modal para cadastro de um novo pacote de exames
 Modal para edição de um pacote de exames existente
 <img src="./resources/images/print7.jpg" />
 
-#### Telas de Solicitação de Exames
+### Telas de Solicitação de Exames
 Visão geral da tela de solicitações
 <img src="./resources/images/print8.jpg" />
 Modal com seleção de pacotes de exames para inserção na seleção
@@ -130,8 +132,8 @@ Modal com seleção de pacotes de exames para inserção na seleção
 Modal com seleção de exames avulsos para inserção na seleção
 <img src="./resources/images/print10.jpg" />
 Visão geral da tela de solicitações após seleção de elementos diversos
-<img src="./resources/images/print11.jpg" />
+<img src="./resources/images/print11.png" />
 
-#### PDF Demo
+### PDF Demo
 Na tela de solicitações de exames, ao clicar em exportar, é gerado um PDF com aplicação de regras de negócio diversas e bem distintas que possibilitam inúmeras combinações de visão.
 [Visualizar PDF de demonstração](./resources/documents/demo.pdf)
