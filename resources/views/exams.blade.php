@@ -3,7 +3,7 @@
 @section('content')
 
     <div id="app">
-        <dashboard-counts></dashboard-counts>
+        <exams></exams>
     </div>
 
 @endsection
