@@ -1,59 +1,137 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Teste prático de PHP/Vue
+Projeto estruturado para trabalhar com VueJS 2, backend Laravel, estilização com Tailwind.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Por onde começar
 
-## About Laravel
+* Faça um clone deste projeto;
+    ```bash
+    git clone https://github.com/FelipePPJ/eyecare.git
+    ```
+* Utilize o arquivo .env exemplo para setar as configurações base de banco de dados:
+    ```bash
+    .env.example
+    ```
+* Após configuração do banco de dados lembre-se de criar uma nova chave para o projeto
+    ```bash
+    php artisan key:generate
+    ```
+* Após ajustes realizados, basta executar o setup base para instalar dependências e a estrutura inicia
+    ```bash
+    php artisan migrate
+    php artisan db:seed
+    npm install
+    composer install
+    php artisan config:clear
+    php artisan route:clear
+    php artisan view:clear
+    php artisan cache:clear
+    php artisan config:cache
+    npm run build
+    ```
+<br/>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Tecnologias Explorados
+* PHP, Laravel, APIs;
+* VueJS 2;
+* Tailwind;
+<br/>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Dificuldades Exploradas
+* A implementação com VueJS foi mais demoradas devido a inexperiência. Costumo utilizar Laravel/Livewire como reatividade;
+* Tailwind não costuma ser a estilização padrão que utilizo. Normalmente utilizo Bootstrap.
+Tais pontos foram interessantes de se trabalhar com uma implementação do zero.
+<br/>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Estruturação do projeto
+Foi levada a premissa de que cada tecnologia utilizada devesse ser explorada com seus pontos fortes, separando assim as responsabilidades e estruturas respectivas.
 
-## Learning Laravel
+### Laravel
+* Tratar todos os processos de backend;
+* Renderização base de front;
+* API;
+* Roteamento;
+* Traduções;
+* Estruturação dos dados e registros;
+* Processamento dos dados e registros;
+* Arquitetura MVC;
+* Aplicação de PSR-2;
+* Componentização do VueJS;
+* Exportação de PDF;
+* Seeder de grupos e exames;
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### VueJS
+* Tratar todos os processos de frontend;
+* Criação de componentes;
+* Consumo de API;
+* Páginas reatividades;
+* Estrutura CRUD;
+* Estilização via Tailwind;
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### MySQL
+* Estruturação de tabelas com tipagem forte e relacionamentos;
+* Criado um relacionamento a partir de uma tabela de grupos (separador de grupos para exportação em PDF segmentado) para explorar este recurso;
+<img title="Modelagem MySQL" src="./resources/images/modelagem-mysql.jpg" />
 
-## Laravel Sponsors
+#### Observações
+O VueJS foi a peça chave de conexão de todo o sistema, pois a partir dele é que existe a interação do usuário e iteração de todas as tecnologias. Foi utilizado o principio de componentização para criar cada estrutura interativa. Como o projeto do frontend está associado ao Laravel, cada página possui uma rota, não se tratando de uma SAP.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+As regras de negócio foram seguidas a risca de acordo com a compreensão para garantir a usabilidade e também possibilidades de versões seguintes com melhorias gradativas.
+<br/>
 
-### Premium Partners
+## Pontos de melhoria para próximas versões
+Por se tratar de uma primeira versão, foram atendido ao máximo os objetivos do teste. Para não delongar demais, existem pontos já mapeados para melhorias futuras, são eles:
+* VueJS: Componentes com paginação;
+* VueJS: Melhor isolamento e reaproveitamento de componentes;
+* VueJS: Separar projeto do backend (não foi feito inicialmente por inexperiência mesmo);
+* Rota para exclusão de exames (softDelete);
+* Rota para exclusão de pacotes (softDelete);
+* Estrutura de banco para armazenamento de uma solicitação de exames;
+* Rotas para tratar solicitações de exames;
+* Área de gestão (CRUD) para usuários/médicos;
+* Área de gestão (CRUD) para pacientes;
+* Ajustes pontuais em regras de negócios referente a edição de campos dos forms;
+* Tabela de Logs para controle de eventos;
+* Api: Criar camada de validação por usuário|token|sessão;
+* Api: Consumo via CSRF|Bearer|JWT;
+* Tailwild: Aplicação de identidade visual;
+* Tailwild: Melhorias na responsividade;
+* Container de estruturas para o back, front, banco [por mais que hoje meu ambientes de teste já seja em containers (Docker, Portainer, Traefik, Nginx, MySQL, entre outros), o projeto em si foi gerado unificado];
+* Documentação: Refinar documentação de classes, componentes, API/Postman;
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## Considerações finais
+Este foi um projeto desafiador, pois fugiu em boa parte do ecosistema habitual que costumo utilizar (focado principalmente no backend). Sustentar sistemas já ambientados com esta estrutura se torna simples em comparação a elabora-la por completo. O VueJS e o Tailwild são ótimas ferramentas para o frontend no qual estou estudando para me aperfeiçoar mais.
 
-## Contributing
+## Imagens
+<br>
+#### Home
+<img src="./resources/images/print1.jpg" />
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### Telas de Exames
+Visão geral da relação de exames
+<img src="./resources/images/print2.jpg" />
+Modal para cadastro de um novo exame
+<img src="./resources/images/print3.jpg" />
+Modal para edição de um exame existente
+<img src="./resources/images/print4.jpg" />
 
-## Code of Conduct
+#### Telas de Pacotes
+Visão geral de pacotes de exames cadastrados
+<img src="./resources/images/print5.jpg" />
+Modal para cadastro de um novo pacote de exames
+<img src="./resources/images/print6.jpg" />
+Modal para edição de um pacote de exames existente
+<img src="./resources/images/print7.jpg" />
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+#### Telas de Solicitação de Exames
+Visão geral da tela de solicitações
+<img src="./resources/images/print8.jpg" />
+Modal com seleção de pacotes de exames para inserção na seleção
+<img src="./resources/images/print9.jpg" />
+Modal com seleção de exames avulsos para inserção na seleção
+<img src="./resources/images/print10.jpg" />
+Visão geral da tela de solicitações após seleção de elementos diversos
+<img src="./resources/images/print11.jpg" />
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### PDF Demo
+Na tela de solicitações de exames, ao clicar em exportar, é gerado um PDF com aplicação de regras de negócio diversas e bem distintas que possibilitam inúmeras combinações de visão.
+[Visualizar PDF de demonstração](./resources/documents/demo.pdf)
